@@ -2,7 +2,7 @@ import { useDispatch } from "react-redux";
 import { bindActionCreators } from "redux";
 import ActionCreators from "../store/creators";
 
-export const useActions = <T extends keyof typeof ActionCreators>(reducerKey: T) => {
+export const useActions = <T extends keyof typeof ActionCreators>(reducerKey: T): typeof ActionCreators[T] => {
     const dispatch = useDispatch();
 
     const actions = ActionCreators[reducerKey];

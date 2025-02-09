@@ -1,7 +1,7 @@
 import React from "react";
 import HomePage from "./features/home-page";
 import roles from "./utils/roles";
-const rootPath = "";
+import crudPages from "./features/crud-pages";
 
 export interface IRouteEndpoint {
     path: string,
@@ -12,15 +12,16 @@ export interface IRouteEndpoint {
 }
 
 const rootRoute: IRouteEndpoint = {
-    path: rootPath,
+    path: import.meta.env.BASE_URL,
     component: HomePage,
     accessLevel: roles.GUEST,
     name: "Just",
     nested: null
 }
 
-export const routes: IRouteEndpoint[] = [
+const routes: IRouteEndpoint[] = [
     rootRoute,
+    crudPages
     // {
     //     path: `${rootPath}/cruds`,
     //     component: null,
@@ -36,4 +37,4 @@ export const routes: IRouteEndpoint[] = [
     // }
 ];
 
-export default rootPath; 
+export default routes;

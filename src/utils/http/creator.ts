@@ -1,8 +1,14 @@
 import axios, { AxiosRequestConfig, CancelToken } from "axios";
+import { getTokenFromLocalStorage } from "../enviroment/storage/token";
 
 export const urlBackend = import.meta.env.VITE_API_URL;
 
-export const bearer_json = (token: string, cancelToken?: CancelToken) => {
+export const bearer_json = (cancelToken?: CancelToken) => {
+    const token = getTokenFromLocalStorage();
+
+    if (!token)
+        throw new Error("Token not found");
+
     const config: AxiosRequestConfig = {
         baseURL: urlBackend,
         headers: {
@@ -12,10 +18,16 @@ export const bearer_json = (token: string, cancelToken?: CancelToken) => {
         },
         cancelToken: cancelToken
     };
+
     return axios.create(config);
 }
 
-export const bearer_form = (token: string, cancelToken?: CancelToken) => {
+export const bearer_form = (cancelToken?: CancelToken) => {
+    const token = getTokenFromLocalStorage();
+
+    if (!token)
+        throw new Error("Token not found");
+
     const config: AxiosRequestConfig = {
         baseURL: urlBackend,
         headers: {
@@ -25,6 +37,7 @@ export const bearer_form = (token: string, cancelToken?: CancelToken) => {
         },
         cancelToken: cancelToken
     };
+
     return axios.create(config);
 }
 
@@ -37,6 +50,7 @@ export const http_json = (cancelToken?: CancelToken) => {
         },
         cancelToken: cancelToken
     };
+
     return axios.create(config);
 };
 
@@ -49,5 +63,6 @@ export const http_form = (cancelToken?: CancelToken) => {
         },
         cancelToken: cancelToken
     };
+
     return axios.create(config);
 }

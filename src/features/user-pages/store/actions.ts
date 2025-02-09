@@ -1,12 +1,12 @@
 import { Dispatch } from "redux";
 import { ICreateUser, ILogin, ITokenUser, SignAction, SignActionTypes } from "./types";
-import { removeTokenFromLocalStorage, setTokenToLocalStorage } from "../../../utils/storage/token";
+import { removeTokenFromLocalStorage, setTokenToLocalStorage } from "../../../utils/enviroment/storage/token";
 import { http_form } from '../../../utils/http/creator';
 import { jwtDecode } from "jwt-decode";
 import rolesAccess from "../../../utils/roles/roles-access";
 import getRoleById from "../../../utils/roles/get-role-by-id";
 import { AxiosError } from "axios";
-import errorExtractor from "../../../utils/axios-error-extractor";
+import errorExtractor from "../../../utils/error/extractor/axios";
 import { ILoginError } from "../login";
 import { ICreateUserError } from "../register";
 
@@ -76,7 +76,7 @@ export const createUserAction = (user: ICreateUser, setErrors: (errors: ICreateU
 
 const login = async (token: string, dispatch: Dispatch<SignAction>) => {
     if (token) {
-        setTokenToLocalStorage(JSON.stringify(token));
+        setTokenToLocalStorage(token);
         const decodedUser = jwtDecode<ITokenUser>(token);
 
         const role = await getRoleById(decodedUser.roleId);

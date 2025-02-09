@@ -1,6 +1,7 @@
 import React, { useCallback, useMemo, useRef } from "react";
 import { Button, Form, Modal } from "react-bootstrap";
 import { IFieldSpecifics, IModalFormError, IValidation } from "./types";
+import moment from "moment";
 
 interface IModalFormProps {
     show: boolean
@@ -11,11 +12,11 @@ interface IModalFormProps {
     validation: { [key: string]: IValidation[] }
     specifics: IFieldSpecifics[]
     fields: readonly string[]
-    setError: React.Dispatch<React.SetStateAction<IModalFormError>>
+    setError: (error: IModalFormError) => void
     handleSubmit: (data: Record<string, string | File | null>) => void
     handleClose: () => void
 }
-///////// magic
+
 const ModalForm = React.memo(({ show, title, handleClose, getter, setter, error, setError, handleSubmit, validation, specifics, fields }: IModalFormProps) => {
     type FieldsType = typeof fields[number];
 
@@ -58,8 +59,14 @@ const ModalForm = React.memo(({ show, title, handleClose, getter, setter, error,
                 acc[value] = getter[index]!;
                 return acc;
             }, {} as Record<string, string | File | null>);
+
             handleSubmit(data);
+
             close();
+            // TODO
+            // if (Object.values(error).every(value => !value)) {
+            //     close();
+            // }
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [error, typeValues, setError, getter, fields, handleSubmit, close]);
@@ -106,7 +113,9 @@ const ModalForm = React.memo(({ show, title, handleClose, getter, setter, error,
                                         <Form.Select
                                             id={specific.title}
                                             defaultValue={getter[index] as string}
-                                            onBlur={(e: React.ChangeEvent<HTMLSelectElement>) => handleEdit(e.target.value, fields[index])}>
+                                            onInput={(e: React.ChangeEvent<HTMLSelectElement>) => handleEdit(e.target.value, fields[index])}
+                                            isInvalid={!!error[fields[index]]}
+                                        >
                                             <>
                                                 <option value="">Choose</option>
                                                 {
@@ -122,14 +131,18 @@ const ModalForm = React.memo(({ show, title, handleClose, getter, setter, error,
                                                 <Form.Control id={specific.title}
                                                     type={specific.type}
                                                     onChange={(e: React.ChangeEvent<HTMLInputElement>) => handleEdit(e.target.files![0], fields[index])}
+                                                    isInvalid={!!error[fields[index]]}
                                                 />
                                                 {(getter[index] as File | null)?.name}
                                             </>
                                             :
-                                            <Form.Control id={specific.title}
+                                            <Form.Control
+                                                id={specific.title}
                                                 type={specific.type}
-                                                defaultValue={getter[index] as string}
-                                                onBlur={(e: React.FocusEvent<HTMLInputElement>) => handleEdit(e.target.value, fields[index])}
+                                                defaultValue={specific.type === "date" ? moment(getter[index] as string).format("YYYY-MM-DD")
+                                                    : specific.type === "datetime-local" ? moment(getter[index] as string).local().format("YYYY-MM-DDTHH:mm") : getter[index] as string}
+                                                onInput={(e: React.FocusEvent<HTMLInputElement>) => handleEdit(specific.type === "datetime-local" ? moment(e.target.value).utc().format("YYYY-MM-DDTHH:mm") : e.target.value, fields[index])}
+                                                isInvalid={!!error[fields[index]]}
                                             />
                                 }
                                 {error[fields[index]] && <Form.Text className="text-danger">{error[fields[index]]}</Form.Text>}

@@ -1,4 +1,4 @@
-import { useTypedSelector } from "../../hooks/useTypeSelector";
+import { useTypedSelector } from "../../hooks/useTypedSelector";
 import "./index.css";
 import { useActions } from "../../hooks/useActions";
 import { useEffect } from "react";

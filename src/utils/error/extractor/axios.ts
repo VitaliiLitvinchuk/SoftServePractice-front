@@ -1,13 +1,13 @@
 import { AxiosError } from "axios";
 import { Dispatch } from "redux";
-import { InformationMessengerActionTypes, InformationMessengersAction } from "../../components/error-information-messenger/store/types";
+import { InformationMessengerActionTypes, InformationMessengersAction } from "../../../components/error-information-messenger/store/types";
 
 interface IServerError {
     [key: string]: string[] | string | undefined
     server: string | undefined
 }
 
-interface IError {
+export interface IError {
     [key: string]: string[]
 }
 

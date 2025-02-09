@@ -1,10 +1,12 @@
 import { Button, Container, Nav, NavDropdown, Navbar } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import rootPath, { routes } from "../../../routes";
-import { useTypedSelector } from "../../../hooks/useTypeSelector";
+import routes from "../../../routes";
+import { useTypedSelector } from "../../../hooks/useTypedSelector";
 import { useActions } from '../../../hooks/useActions';
+import { baseViteUrl } from "../../../utils/enviroment/settings";
 
 const symbolsLimit = 25;
+
 const Limiter = (x: string)
     : string => x.length > symbolsLimit ? `${x.slice(0, symbolsLimit)}...` : x;
 
@@ -62,10 +64,10 @@ const Header = () => {
                                 </> :
                                 <>
                                     <Nav.Item>
-                                        <Link className="nav-link" to={`${rootPath}/register`}>Register</Link>
+                                        <Link className="nav-link" to={`${baseViteUrl}/register`}>Register</Link>
                                     </Nav.Item>
                                     <Nav.Item>
-                                        <Link className="nav-link" to={`${rootPath}/login`}>Login</Link>
+                                        <Link className="nav-link" to={`${baseViteUrl}/login`}>Login</Link>
                                     </Nav.Item>
                                 </>
                         }
