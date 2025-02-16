@@ -6,7 +6,6 @@ export enum MoviesActionTypes {
 }
 
 export interface IMovie {
-    [key: string]: string
     id: string;
     name: string;
     duration: string;

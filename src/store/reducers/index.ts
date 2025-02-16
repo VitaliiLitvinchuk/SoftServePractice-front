@@ -18,6 +18,10 @@ import { userReducer } from "../../features/crud-pages/users/store/reducer";
 import { sessionReducer } from "../../features/crud-pages/sessions/store/reducer";
 import { ticketReducer } from "../../features/crud-pages/tickets/store/reducer";
 import { purchaseHistoryReducer } from "../../features/crud-pages/purchase-histories/store/reducer";
+import { homeReducer } from "../../features/home-page/store/reducer";
+import { detailMovieReducer } from "../../features/detail-pages/movie/store/reducer";
+import { detailSessionReducer } from "../../features/detail-pages/session/store/reducer";
+import { detailHallReducer } from "../../features/detail-pages/hall/store/reducer";
 
 export const rootReducer = combineReducers({
     sign: signReducer,
@@ -38,7 +42,11 @@ export const rootReducer = combineReducers({
     user: userReducer,
     session: sessionReducer,
     ticket: ticketReducer,
-    purchaseHistory: purchaseHistoryReducer
+    purchaseHistory: purchaseHistoryReducer,
+    home: homeReducer,
+    detailMovie: detailMovieReducer,
+    detailSession: detailSessionReducer,
+    detailHall: detailHallReducer
 });
 
 export type RootState = ReturnType<typeof rootReducer>;

@@ -17,6 +17,10 @@ import * as UsersActions from "../../features/crud-pages/users/store/actions";
 import * as SessionsActions from "../../features/crud-pages/sessions/store/actions";
 import * as TicketsActions from "../../features/crud-pages/tickets/store/actions";
 import * as PurchaseHistoriesActions from "../../features/crud-pages/purchase-histories/store/actions";
+import * as HomeActions from "../../features/home-page/store/actions";
+import * as DetailMovieActions from '../../features/detail-pages/movie/store/actions';
+import * as DetailSessionActions from '../../features/detail-pages/session/store/actions';
+import * as DetailHallActions from '../../features/detail-pages/hall/store/actions';
 
 export default {
     informationMessenger: InformationMessengerActions,
@@ -37,5 +41,9 @@ export default {
     user: UsersActions,
     session: SessionsActions,
     ticket: TicketsActions,
-    purchaseHistory: PurchaseHistoriesActions
+    purchaseHistory: PurchaseHistoriesActions,
+    home: HomeActions,
+    detailMovie: DetailMovieActions,
+    detailSession: DetailSessionActions,
+    detailHall: DetailHallActions
 }

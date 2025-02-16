@@ -7,6 +7,9 @@ import Login from './features/user-pages/login';
 import { useTypedSelector } from './hooks/useTypedSelector';
 import Register from './features/user-pages/register';
 import { baseViteUrl } from './utils/enviroment/settings';
+import Movie from './features/detail-pages/movie';
+import Session from './features/detail-pages/session';
+import Hall from './features/detail-pages/hall';
 
 const App = () => {
   const { isLoggined, role } = useTypedSelector(state => state.sign);
@@ -42,6 +45,9 @@ const App = () => {
             <Route path={`${baseViteUrl}/register`} element={<Register />} />
           </>
         }
+        <Route path={`${baseViteUrl}/movie`} element={<Movie />} />
+        <Route path={`${baseViteUrl}/session`} element={<Session />} />
+        <Route path={`${baseViteUrl}/hall`} element={<Hall />} />
       </Route>
       <Route path='*' element={isLoggined ? <Navigate to={`${baseViteUrl}/`} /> : <Navigate to={`${baseViteUrl}/login`} />} />
     </Routes>

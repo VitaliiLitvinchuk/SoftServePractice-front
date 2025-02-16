@@ -8,7 +8,7 @@ import CreateSessionModal from "./modal-form/create";
 import roles from "../../../utils/roles";
 import SessionWorkerModal, { ISessionErrorType } from "./modal-form";
 import { ISession, ISessionWorker } from "./store/types";
-import moment from "moment";
+import { formatDateWithTime } from "../../../utils/date/format";
 
 const operationAccess = roles.ADMIN;
 
@@ -83,8 +83,8 @@ const Sessions = React.memo(() => {
                                         <td>{session.movie.name}</td>
                                         <td>{session.status.name}</td>
                                         <td>{session.hall.name}</td>
-                                        <td>{moment(session.startAt).format("YYYY-MM-DD HH:mm")}</td>
-                                        <td>{moment(session.endAt).format("YYYY-MM-DD HH:mm")}</td>
+                                        <td>{formatDateWithTime(session.startAt)}</td>
+                                        <td>{formatDateWithTime(session.endAt)}</td>
                                         {
                                             role?.includes(operationAccess) &&
                                             <td>

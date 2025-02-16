@@ -2,7 +2,7 @@ import { Button, Form } from "react-bootstrap"
 import { useActions } from "../../../hooks/useActions"
 import { useRef, useState } from "react";
 import { Link } from "react-router-dom";
-import rootPath from "../../../routes";
+import { baseViteUrl } from "../../../utils/enviroment/settings";
 
 export interface ILoginError {
     [key: string]: string[] | undefined;
@@ -66,7 +66,7 @@ const Login = () => {
                             </div>
                             <div className="d-flex justify-content-center align-items-center mt-2">
                                 <Form.Text>
-                                    Don't have an account? <Link to={`${rootPath}/register`}>Register</Link>
+                                    Don't have an account? <Link to={`${baseViteUrl}/register`}>Register</Link>
                                 </Form.Text>
                             </div>
                         </Form>

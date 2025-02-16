@@ -39,7 +39,7 @@ const validation = {
     ] as IValidation[]
 }
 
-const specifics = [
+const initialSpecifics = [
     { title: "Session", type: "select", options: [] },
     { title: "Seat", type: "select", options: [] },
     { title: "Price", type: "number" },
@@ -49,6 +49,7 @@ const TicketWorkerModal = ({ show, ticket, title, error, skip, setError, handleC
     const [sessionId, setSessionId] = useState<string>(ticket.sessionId);
     const [seatId, setSeatId] = useState<string>(ticket.seatId);
     const [price, setPrice] = useState<string>(ticket.price);
+    const [specifics, setSpecifics] = useState<IFieldSpecifics[]>(initialSpecifics);
 
     const [skipSequence, setSkipSequence] = useState<number[]>([]);
 
@@ -91,11 +92,32 @@ const TicketWorkerModal = ({ show, ticket, title, error, skip, setError, handleC
 
     useEffect(() => {
         specifics[0].options = sessions.map(session => ({ value: session.id, label: session.id } as IModalFormOption));
-    }, [sessions]);
+    }, [sessions, specifics]);
 
     useEffect(() => {
-        specifics[1].options = seats.map(seat => ({ value: seat.id, label: `${seat.row}-${seat.number}` } as IModalFormOption));
-    }, [seats]);
+        if (sessionId) {
+            const session = sessions.find(session => session.id === sessionId)!;
+            setSpecifics(prevSpecifics => {
+                const newSpecifics = [...prevSpecifics];
+                newSpecifics[1] = {
+                    ...newSpecifics[1],
+                    options: seats.filter(seat => seat.hallId === session.hallId).map(seat => ({ value: seat.id, label: `${seat.row}-${seat.number}` } as IModalFormOption))
+                };
+                return newSpecifics;
+            });
+        }
+    }, [seats, sessionId, sessions]);
+
+    useEffect(() => {
+        if (!sessionId) {
+            setSeatId("");
+            setSpecifics(prevSpecifics => {
+                const newSpecifics = [...prevSpecifics];
+                newSpecifics[1] = { ...newSpecifics[1], options: [] };
+                return newSpecifics;
+            });
+        }
+    }, [sessionId])
 
     const setter = useMemo(() => {
         return [setSessionId, setSeatId, setPrice];

@@ -34,7 +34,7 @@ const CrudLoader = ({ name }: { name: string }) => {
 }
 // eslint-disable-next-line react-refresh/only-export-components
 const ComponentCreator = (Component: React.ElementType, name: string) => () => (
-    <Suspense fallback={< CrudLoader name={name} />}>
+    <Suspense fallback={<CrudLoader name={name} />}>
         <Component />
     </Suspense>
 );
@@ -138,30 +138,30 @@ const crudPages = {
         },
         {
             path: "/movies-ratings",
-            component: ComponentCreator(MoviesRatings, "Movie Rating"),
+            component: ComponentCreator(MoviesRatings, "Movies Ratings"),
             accessLevel: roles.USER,
-            name: "Movie Rating",
+            name: "Movies Ratings",
             nested: null
         },
         {
             path: "/sessions",
-            component: ComponentCreator(Sessions, "Session"),
+            component: ComponentCreator(Sessions, "Sessions"),
             accessLevel: roles.USER,
-            name: "Session",
+            name: "Sessions",
             nested: null
         },
         {
             path: "/tickets",
-            component: ComponentCreator(Tickets, "Ticket"),
+            component: ComponentCreator(Tickets, "Tickets"),
             accessLevel: roles.USER,
-            name: "Ticket",
+            name: "Tickets",
             nested: null
         },
         {
             path: "/purchase-histories",
-            component: ComponentCreator(PurchaseHistories, "Purchase History"),
+            component: ComponentCreator(PurchaseHistories, "Purchase Histories"),
             accessLevel: roles.USER,
-            name: "Purchase History",
+            name: "Purchase Histories",
             nested: null
         },
     ] as IRouteEndpoint[]

@@ -1,10 +1,9 @@
-import MainSplider from "./slider";
+import MovieCarousel from "./movie-caurosel";
 
 const HomePage = () => {
     return (
         <div className='text-center pt-5'>
-            <MainSplider />
-            <h1>Hello world</h1>
+            <MovieCarousel />
         </div>
     )
 }

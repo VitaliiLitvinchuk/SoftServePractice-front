@@ -6,7 +6,7 @@ import { useTypedSelector } from "../../../hooks/useTypedSelector";
 import CreatePurchaseHistoryModal from "./modal-form/create";
 import { IPurchaseHistoryErrorType } from "./modal-form";
 import roles from "../../../utils/roles";
-import moment from "moment";
+import { formatDateWithTime } from "../../../utils/date/format";
 
 const operationAccess = roles.ADMIN;
 
@@ -64,7 +64,7 @@ const PurchaseHistories = React.memo(() => {
                                         <td className="text-start"><span className="mx-2">{history.id}</span></td>
                                         <td className="text-start"><span className="mx-2">{history.user.email}</span></td>
                                         <td className="text-start"><span className="mx-2">{history.ticket.price}</span></td>
-                                        <td className="text-start"><span className="mx-2">{moment(history.purchasedAt).format("YYYY-MM-DD HH:mm")}</span></td>
+                                        <td className="text-start"><span className="mx-2">{formatDateWithTime(history.purchasedAt)}</span></td>
                                         {
                                             role?.includes(operationAccess) &&
                                             <td>

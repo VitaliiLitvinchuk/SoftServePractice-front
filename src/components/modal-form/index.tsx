@@ -73,6 +73,7 @@ const ModalForm = React.memo(({ show, title, handleClose, getter, setter, error,
 
     const handleEdit = useCallback((value: string | File | null, field: FieldsType, e: IModalFormError | null = null) => {
         const fieldValidation = validation[field];
+        let state = true;
 
         if (fieldValidation) {
             for (const valid of fieldValidation) {
@@ -82,15 +83,20 @@ const ModalForm = React.memo(({ show, title, handleClose, getter, setter, error,
                     } else {
                         setError({ ...error, [field]: valid.message.replace("{validationFor}", specifics[fields.indexOf(field)].title) });
                     }
-                    return false;
+
+                    state = false;
+                    break;
                 }
             }
         }
 
         setter[fields.indexOf(field)](value);
-        setError({ ...error, [field]: "" });
 
-        return true;
+        if (state) {
+            setError({ ...error, [field]: "" });
+        }
+
+        return state;
     }, [validation, fields, setter, setError, error, specifics]);
 
     return (

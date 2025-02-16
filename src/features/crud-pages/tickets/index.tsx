@@ -8,7 +8,7 @@ import CreateTicketModal from "./modal-form/create";
 import roles from "../../../utils/roles";
 import TicketWorkerModal, { ITicketErrorType } from "./modal-form";
 import { ITicket, ITicketWorker } from "./store/types";
-import moment from "moment";
+import { formatDateWithTime } from "../../../utils/date/format";
 
 const operationAccess = roles.ADMIN;
 
@@ -81,8 +81,8 @@ const Tickets = React.memo(() => {
                                         <td>{ticket.id}</td>
                                         <td>{ticket.price}</td>
                                         <td>{ticket.seat.row}-{ticket.seat.number}</td>
-                                        <td>{moment(ticket.session.startAt).format("YYYY-MM-DD HH:mm")}</td>
-                                        <td>{moment(ticket.session.endAt).format("YYYY-MM-DD HH:mm")}</td>
+                                        <td>{formatDateWithTime(ticket.session.startAt)}</td>
+                                        <td>{formatDateWithTime(ticket.session.endAt)}</td>
                                         {
                                             role?.includes(operationAccess) &&
                                             <td>

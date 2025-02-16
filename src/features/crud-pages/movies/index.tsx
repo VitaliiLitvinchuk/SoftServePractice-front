@@ -8,7 +8,7 @@ import CreateMovieModal from "./modal-form/create";
 import MovieWorkerModal, { IMovieErrorType } from "./modal-form";
 import roles from "../../../utils/roles";
 import converterUrlToImageLocation from "../../../utils/url/converters";
-import moment from "moment";
+import { formatDate } from "../../../utils/date/format";
 
 const operationAccess = roles.ADMIN;
 
@@ -90,7 +90,7 @@ const Movies = React.memo(() => {
                             <td className="text-center align-middle"><span className="mx-2">{movie.duration}</span></td>
                             <td className="text-center align-middle"><span className="mx-2"><img className="w-50" src={converterUrlToImageLocation(movie.imageUrl)} alt="Not Found" /></span></td>
                             <td className="text-center align-middle"><span className="mx-2">{movie.description}</span></td>
-                            <td className="text-center align-middle"><span className="mx-2">{moment(movie.releaseDate).format("YYYY-MM-DD")}</span></td>
+                            <td className="text-center align-middle"><span className="mx-2">{formatDate(movie.releaseDate)}</span></td>
                             {
                                 role?.includes(operationAccess) &&
                                 <td className="text-center align-middle">

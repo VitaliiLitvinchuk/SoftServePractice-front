@@ -2,7 +2,7 @@ import { useRef, useState } from "react";
 import { useActions } from "../../../hooks/useActions";
 import { Button, Form } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import rootPath from "../../../routes";
+import { baseViteUrl } from "../../../utils/enviroment/settings";
 
 export interface ICreateUserError {
     [key: string]: string[] | undefined;
@@ -80,7 +80,7 @@ const Register = () => {
                             </div>
                             <div className="d-flex justify-content-center align-items-center mt-2">
                                 <Form.Text>
-                                    Already have an account? <Link to={`${rootPath}/login`}>Login</Link>
+                                    Already have an account? <Link to={`${baseViteUrl}/login`}>Login</Link>
                                 </Form.Text>
                             </div>
                         </Form>
