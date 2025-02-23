@@ -8,6 +8,253 @@
   margin: 0;
 }
 
+html {
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
+body {
+  --aqua: #40C4FF;
+  --aqua-hover: #0288D1;
+  --aqua-active: #004C8C;
+  --aqua-disabled: #B2EBF2;
+  --dark-orange: #FF5722;
+  --dark-orange-hover: #E64A19;
+  --dark-orange-active: #C41B1B;
+  --dark-orange-disabled: #FFC107;
+  --soft-cream: #FFF9E6;
+  --soft-cream-hover: #FFE082;
+  --soft-cream-active: #FFD700;
+  --soft-cream-disabled: #FFF8E1;
+  --dark-gray: #424242;
+  --dark-gray-hover: #616161;
+  --dark-gray-active: #2E2E2E;
+  --dark-gray-disabled: #9E9E9E;
+}
+
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+  color-scheme: light dark;
+  color: #FFF9E6;
+  background-color: #242424;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+
+  background-color: var(--soft-cream);
+  filter: brightness(0.9);
+}
+
 .no-select {
   user-select: none;
+}
+
+.bg-aqua {
+  background-color: var(--aqua);
+}
+
+.bg-dark-aqua * {
+  background-color: var(--aqua);
+}
+
+.bg-dark-orange {
+  background-color: var(--dark-orange);
+}
+
+.bg-dark-orange * {
+  background-color: var(--dark-orange);
+}
+
+.bg-soft-cream {
+  background-color: var(--soft-cream);
+}
+
+.bg-soft-cream * {
+  background-color: var(--soft-cream);
+}
+
+.bg-dark-gray {
+  background-color: var(--dark-gray);
+}
+
+.bg-dark-gray * {
+  background-color: var(--dark-gray);
+}
+
+.color-aqua {
+  color: var(--aqua);
+}
+
+.color-aqua * {
+  color: var(--aqua);
+}
+
+.color-dark-orange {
+  color: var(--dark-orange);
+}
+
+.color-dark-orange * {
+  color: var(--dark-orange);
+}
+
+.color-soft-cream {
+  color: var(--soft-cream);
+}
+
+.color-soft-cream * {
+  color: var(--soft-cream);
+}
+
+.color-dark-gray {
+  color: var(--dark-gray);
+}
+
+.color-dark-gray * {
+  color: var(--dark-gray);
+}
+
+.border-aqua {
+  border-color: var(--aqua);
+}
+
+.border-dark-orange {
+  border-color: var(--dark-orange);
+}
+
+.border-soft-cream {
+  border-color: var(--soft-cream);
+}
+
+.border-dark-gray {
+  border-color: var(--dark-gray);
+}
+
+.table-dark {
+  --bs-table-bg: var(--dark-gray);
+  --bs-table-striped-bg: var(--dark-gray);
+  --bs-table-striped-color: var(--soft-cream);
+  --bs-table-active-bg: var(--dark-gray-hover);
+  --bs-table-active-color: var(--soft-cream-hover);
+  --bs-table-hover-bg: var(--dark-gray-hover);
+  --bs-table-hover-color: var(--soft-cream-hover);
+  --bs-table-border-color: var(--dark-gray-hover);
+  --bs-table-color: var(--soft-cream);
+}
+
+.modal {
+  letter-spacing: 0.03rem;
+  --bs-modal-bg: var(--dark-gray);
+  --bs-modal-color: var(--soft-cream);
+  --bs-modal-border-color: var(--dark-gray-hover);
+  --bs-modal-header-border-color: var(--dark-gray-hover);
+  --bs-modal-footer-border-color: var(--dark-gray-hover);
+}
+
+.btn-secondary {
+  --bs-btn-color: var(--soft-cream);
+  --bs-btn-bg: var(--dark-gray);
+  --bs-btn-border-color: var(--dark-gray-hover);
+  --bs-btn-hover-color: var(--soft-cream-hover);
+  --bs-btn-hover-bg: var(--dark-gray-hover);
+  --bs-btn-hover-border-color: var(--dark-gray-hover);
+  --bs-btn-active-color: var(--soft-cream-active);
+  --bs-btn-active-bg: var(--dark-gray-active);
+  --bs-btn-active-border-color: var(--dark-gray-active);
+}
+
+.btn-primary {
+  --bs-btn-color: var(--soft-cream);
+  --bs-btn-bg: var(--dark-gray);
+  --bs-btn-border-color: var(--dark-gray-hover);
+  --bs-btn-hover-color: var(--soft-cream-hover);
+  --bs-btn-hover-bg: var(--dark-gray-hover);
+  --bs-btn-hover-border-color: var(--dark-gray-hover);
+  --bs-btn-active-color: var(--soft-cream-active);
+  --bs-btn-active-bg: var(--dark-gray-active);
+  --bs-btn-active-border-color: var(--dark-gray-active);
+}
+
+.navbar {
+  --bs-navbar-bg: var(--dark-gray);
+  --bs-navbar-color: var(--soft-cream);
+  --bs-navbar-hover-bg: var(--dark-gray-hover);
+  --bs-navbar-hover-color: var(--soft-cream-hover);
+  --bs-navbar-disabled-bg: var(--dark-gray-disabled);
+  --bs-navbar-active-bg: var(--dark-gray-active);
+  --bs-navbar-active-color: var(--dark-gray-active);
+  --bs-navbar-brand-bg: var(--dark-gray);
+  --bs-navbar-brand-color: var(--soft-cream);
+  --bs-navbar-brand-hover-bg: var(--dark-gray-hover);
+  --bs-navbar-brand-hover-color: var(--soft-cream-hover);
+  --bs-navbar-toggler-border-color: var(--dark-gray-hover);
+}
+
+.dropdown-menu {
+  --bs-dropdown-bg: var(--dark-gray);
+  --bs-dropdown-link-color: var(--soft-cream);
+  --bs-dropdown-link-hover-bg: var(--dark-gray-hover);
+  --bs-dropdown-link-hover-color: var(--soft-cream-hover);
+  --bs-dropdown-link-active-bg: var(--dark-gray-active);
+  --bs-dropdown-link-active-color: var(--soft-cream-active);
+}
+
+.navbar-nav .nav-link.active,
+.navbar-nav .nav-link.show {
+  color: var(--soft-cream-active);
+}
+
+.btn-link {
+  text-decoration: none;
+  --bs-btn-color: var(--aqua);
+  --bs-btn-hover-color: var(--aqua-hover);
+  --bs-btn-active-color: var(--aqua-active);
+}
+
+.form-control {
+  --bs-form-control-bg: var(--dark-gray);
+  --bs-border-color: var(--dark-gray-hover);
+  --bs-border-width: 1px;
+}
+
+.btn-outline-danger {
+  --bs-btn-color: var(--dark-orange);
+  --bs-btn-border-color: var(--dark-orange);
+  --bs-btn-hover-bg: var(--dark-orange-hover);
+  --bs-btn-hover-border-color: var(--dark-orange-hover);
+  --bs-btn-active-color: var(--dark-orange-active);
+  --bs-btn-active-bg: var(--dark-orange-active);
+  --bs-btn-active-border-color: var(--dark-orange-active);
+}
+
+.btn-success {
+  --bs-btn-color: var(--soft-cream);
+  --bs-btn-bg: var(--aqua);
+  --bs-btn-border-color: var(--dark-orange);
+  --bs-btn-hover-color: var(--soft-cream-hover);
+  --bs-btn-hover-bg: var(--aqua-hover);
+  --bs-btn-hover-border-color: var(--dark-orange-hover);
+  --bs-btn-active-color: var(--soft-cream-active);
+  --bs-btn-active-bg: var(--aqua-active);
+  --bs-btn-active-border-color: var(--dark-orange-active);
+}
+
+.btn-outline-warning {
+  --bs-btn-color: var(--soft-cream);
+  --bs-btn-border-color: var(--aqua);
+  --bs-btn-hover-color: var(--soft-cream);
+  --bs-btn-hover-bg: var(--aqua-hover);
+  --bs-btn-hover-border-color: var(--aqua-hover);
+  --bs-btn-active-color: var(--soft-cream);
+  --bs-btn-active-bg: var(--aqua-active);
+  --bs-btn-active-border-color: var(--aqua-active);
 }

@@ -89,7 +89,7 @@ const MovieCarousel = () => {
                             <Row>
                                 <Col className="d-flex justify-content-center align-items-center">
                                     <span className="d-flex align-items-center justify-content-center flex-grow-1">
-                                        Your ad
+                                        Ads
                                     </span>
                                 </Col>
                                 <Col>
@@ -103,7 +103,7 @@ const MovieCarousel = () => {
                                 </Col>
                                 <Col className="d-flex justify-content-center align-items-center">
                                     <span className="d-flex align-items-center justify-content-center flex-grow-1">
-                                        Your ad
+                                        Ads
                                     </span>
                                 </Col>
                             </Row>

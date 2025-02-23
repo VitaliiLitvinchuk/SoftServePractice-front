@@ -12,7 +12,7 @@
     border: 1px solid #ddd;
     z-index: 1000;
     overflow-y: auto;
-    max-height: 80vh;
+    max-height: 10vh;
     transition: right 0.4s ease-in-out;
 }
 

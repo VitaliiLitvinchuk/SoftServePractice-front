@@ -100,19 +100,20 @@ const ModalForm = React.memo(({ show, title, handleClose, getter, setter, error,
     }, [validation, fields, setter, setError, error, specifics]);
 
     return (
-        <Modal show={show} onHide={close}>
+        <Modal className="fw-bold" show={show} onHide={close}>
             <Modal.Header>
                 <Modal.Title>{title}</Modal.Title>
             </Modal.Header>
             <Form onSubmit={submit}>
-                <Modal.Body onKeyDown={(e) => {
-                    if (submitButtonRef.current && e.key === "Enter") {
-                        submitButtonRef.current.focus();
-                    }
-                }}>
+                <Modal.Body
+                    onKeyDown={(e) => {
+                        if (submitButtonRef.current && e.key === "Enter") {
+                            submitButtonRef.current.focus();
+                        }
+                    }}>
                     {
                         specifics.map((specific, index) => (
-                            <Form.Group key={specific.title}>
+                            <Form.Group className="mb-3" key={specific.title}>
                                 <Form.Label htmlFor={specific.title}>{specific.title}</Form.Label>
                                 {
                                     specific.type === "select" ?
@@ -156,12 +157,12 @@ const ModalForm = React.memo(({ show, title, handleClose, getter, setter, error,
                         ))
                     }
                 </Modal.Body>
-                <Modal.Footer>
-                    <Button variant="secondary" onClick={close}>
-                        Close
-                    </Button>
+                <Modal.Footer className="d-flex justify-content-between">
                     <Button ref={submitButtonRef} variant="primary" type="submit" disabled={Object.values(error).some((value) => !!value)}>
                         Save
+                    </Button>
+                    <Button variant="secondary" onClick={close}>
+                        Close
                     </Button>
                 </Modal.Footer>
             </Form>

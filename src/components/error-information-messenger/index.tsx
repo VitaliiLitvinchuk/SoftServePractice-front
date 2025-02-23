@@ -14,11 +14,13 @@ const InformationMessenger = () => {
 
     useEffect(() => {
         if (showInformationMessenger) {
-            setTimeout(() => {
+            const timeoutId = setTimeout(() => {
                 closeInformationMessenger();
             }, 30000);
+
+            return () => clearTimeout(timeoutId);
         }
-    }, [showInformationMessenger, closeInformationMessenger]);
+    }, [showInformationMessenger, closeInformationMessenger, message]);
 
     return (
         <>

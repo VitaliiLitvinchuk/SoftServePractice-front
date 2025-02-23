@@ -17,7 +17,7 @@ const Header = () => {
 
     return (
         <header>
-            <Navbar bg="dark" data-bs-theme="dark">
+            <Navbar className="bg-dark-gray">
                 <Container>
                     <Navbar.Brand as={Link} to={routes[0].path}>
                         {routes[0].name}

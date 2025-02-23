@@ -33,13 +33,13 @@ const Register = () => {
     return (
         <div className="d-flex flex-grow-1 flex-column">
             <div className="d-flex flex-grow-1 justify-content-center align-items-center">
-                <div className="d-flex flex-column gap-3 w-50 mb-5">
+                <div className="d-flex flex-column gap-3 w-50 mb-5 fw-bold">
                     <div className="d-flex justify-content-center align-items-center">
-                        <h1 className="fw-bold">Register</h1>
+                        <h1>Register</h1>
                     </div>
                     <div className="d-flex justify-content-center align-items-center">
                         <Form className="d-flex flex-column gap-3 w-75" onSubmit={handleSubmit}>
-                            <Form.Group className="d-flex flex-column gap-1">
+                            <Form.Group className="d-flex flex-column">
                                 <Form.Label htmlFor="email">Email</Form.Label>
                                 <Form.Control
                                     ref={emailRef}
@@ -51,7 +51,7 @@ const Register = () => {
                                     {createUserError.email?.[0]}
                                 </Form.Control.Feedback>
                             </Form.Group>
-                            <Form.Group className="d-flex flex-column gap-1">
+                            <Form.Group className="d-flex flex-column">
                                 <Form.Label htmlFor="password">Password</Form.Label>
                                 <Form.Control
                                     ref={passwordRef}
@@ -63,7 +63,7 @@ const Register = () => {
                                     {createUserError.password?.[0]}
                                 </Form.Control.Feedback>
                             </Form.Group>
-                            <Form.Group className="d-flex flex-column gap-1">
+                            <Form.Group className="d-flex flex-column">
                                 <Form.Label htmlFor="confirm-password">Confirm password</Form.Label>
                                 <Form.Control
                                     ref={confirmPasswordRef}
@@ -75,12 +75,10 @@ const Register = () => {
                                     {createUserError.confirmPassword?.[0]}
                                 </Form.Control.Feedback>
                             </Form.Group>
-                            <div className="d-flex justify-content-center align-items-center">
-                                <Button className="px-5" type="submit" variant="primary">Register</Button>
-                            </div>
-                            <div className="d-flex justify-content-center align-items-center mt-2">
+                            <div className="d-flex justify-content-center align-items-center flex-column mt-3">
+                                <Button className="w-50" type="submit" variant="primary">Register</Button>
                                 <Form.Text>
-                                    Already have an account? <Link to={`${baseViteUrl}/login`}>Login</Link>
+                                    Already have an account? <Link className="no-select text-decoration-none" to={`${baseViteUrl}/login`}>Login</Link>
                                 </Form.Text>
                             </div>
                         </Form>
